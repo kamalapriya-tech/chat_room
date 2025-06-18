@@ -64,6 +64,7 @@ Visit "http://localhost:5000".
 ✔️ Includes separate `join.html` for room entry
 
 git clone https://github.com/kamalapriya-tech/chat_room.git
+
 cd chat_room
 
 ⚠️ Note: The Flask app is configured correctly, but due to port limitations or conflicts in cloud platforms like Replit or Render, it may not be reachable via the preview URL. Please run it locally on port 5000 or configure your environment to expose the correct port.
