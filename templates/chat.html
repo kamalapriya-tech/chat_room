@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chat Room</title>
+  <script src="https://cdn.socket.io/4.6.1/socket.io.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+     background-image: url(https://media.istockphoto.com/id/1403848173/vector/vector-online-chatting-pattern-online-chatting-seamless-background.jpg?s=612x612&w=0&k=20&c=W3O15mtJiNlJuIgU6S9ZlnzM_yCE27eqwTCfXGYwCSo=);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .chat-container {
+      background-color: rgb(0, 0, 0);
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+      width: 400px;
+      padding: 20px;
+    }
+
+    .chat-header {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #ffffff;
+    }
+
+    #messages {
+      height: 250px;
+      border: 1px solid #ddd;
+      overflow-y: auto;
+      padding: 10px;
+      margin-bottom: 15px;
+      background-color: #f9f9f9;
+      font-size: 14px;
+    }
+
+    input[type="text"] {
+      width: 70%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      padding: 8px 12px;
+      background-color: #28a745;
+      border: none;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #110e92;
+    }
+    .room{
+      font-size:medium;
+      color: #ffffff;
+      
+
+    }
+  </style>
+</head>
+<body>
+  <div class="chat-container">
+    <div class="chat-header">Welcome, {{ username }}!</div>
+    <div class="room"><strong>Room:</strong> {{ room }}</div>
+    <div id="messages"></div>
+    <input type="text" id="message" placeholder="Type your message...">
+    <button onclick="sendMessage()">Send</button>
+  </div>
+
+  <script>
+    const socket = io();
+    const room = "{{ room }}";
+
+    socket.emit("join", room); // Join the specified room
+
+    socket.on('message', function(msg) {
+      const messages = document.getElementById('messages');
+      const div = document.createElement('div');
+      div.textContent = msg;
+      messages.appendChild(div);
+      messages.scrollTop = messages.scrollHeight;
+    });
+
+    function sendMessage() {
+      const input = document.getElementById('message');
+      const msg = input.value.trim();
+      if (msg !== '') {
+        socket.emit('message', { room: room, msg: msg });
+        input.value = '';
+      }
+    }
+  </script>
+</body>
+</html>

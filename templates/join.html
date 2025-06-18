@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Join Chat Room</title>
+  <style>
+    body {
+      font-family: Arial;
+      background-color: rgba(86, 86, 179, 0.425);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+     
+    }
+    form {
+      background: white;
+      padding: 100px;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border: 5px solid black;
+   
+    }
+    input, button {
+      padding: 10px;
+      margin-top: 10px;
+      width: 100%;
+      margin-right: 50px;
+    }
+  </style>
+</head>
+<body>
+  <form method="POST">
+    <h2>Enter Chat Room Name</h2>
+    <input type="text" name="room" required placeholder="e.g. general">
+    <button type="submit">Join Room</button>
+  </form>
+</body>
+</html>
