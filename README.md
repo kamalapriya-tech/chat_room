@@ -1,7 +1,4 @@
 
-
-
-markdown
  💬 Real-Time Chat App with Rooms
 
 A simple real-time chat application built using **Flask**, **Socket.IO**, and **MySQL** with room support.
