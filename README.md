@@ -66,5 +66,5 @@ Visit "http://localhost:5000".
 ✔️ Frontend styled with background and layout
 ✔️ Includes separate `join.html` for room entry
 
-
+⚠️ Note: The Flask app is configured correctly, but due to port limitations or conflicts in cloud platforms like Replit or Render, it may not be reachable via the preview URL. Please run it locally on port 5000 or configure your environment to expose the correct port.
 
